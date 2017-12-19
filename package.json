@@ -10,7 +10,8 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "jest-runner-eslint": {
     "cliOptions": {
@@ -37,12 +38,17 @@
     "jest": "^22.0.1",
     "jest-runner-eslint": "^0.3.0",
     "prettier": "^1.9.2",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "semantic-release": "^8.2.0"
   },
   "dependencies": {
     "@babel/code-frame": "^7.0.0-beta.35",
     "pify": "^3.0.0",
     "throat": "^4.1.0",
     "worker-farm": "^1.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azz/jest-runner-tsc.git"
   }
 }
