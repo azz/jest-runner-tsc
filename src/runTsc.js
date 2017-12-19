@@ -44,7 +44,7 @@ const convertErrors = ({ start, end, errors, testPath }) => ({
   ),
 });
 
-const runTsc = ({ testPath, config }, workerCallback) => {
+const runTsc = ({ testPath /*, config */ }, workerCallback) => {
   try {
     const start = +new Date();
     const program = ts.createProgram([testPath], {

@@ -50,15 +50,17 @@ module.exports = class TscTestRunner {
         });
       });
 
-    const onError = async (err, test) => {
-      await onFailure(test, err);
-      if (err.type === 'ProcessTerminatedError') {
-        console.error(
-          'A worker process has quit unexpectedly! ' +
-            'Most likely this is an initialization error.'
-        );
-        process.exit(1);
-      }
+    const onError = (err, test) => {
+      return onFailure(test, err).then(() => {
+        if (err.type === 'ProcessTerminatedError') {
+          // eslint-disable-next-line no-console
+          console.error(
+            'A worker process has quit unexpectedly! ' +
+              'Most likely this is an initialization error.'
+          );
+          process.exit(1);
+        }
+      });
     };
 
     const onInterrupt = new Promise((_, reject) => {

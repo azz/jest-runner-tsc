@@ -23,7 +23,8 @@
   },
   "jest": {
     "projects": [
-      "<rootDir>/jest.*.config.js"
+      "<rootDir>/jest.test.config.js",
+      "<rootDir>/jest.eslint.config.js"
     ]
   },
   "devDependencies": {
