@@ -1,0 +1,48 @@
+{
+  "name": "jest-runner-tsc",
+  "version": "0.0.0-development",
+  "description": "A Jest Runner for the TypeScript compiler",
+  "main": "src",
+  "engines": {
+    "node": ">=6"
+  },
+  "author": "Lucas Azzola <@azz>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest"
+  },
+  "jest-runner-eslint": {
+    "cliOptions": {
+      "ignorePath": ".gitignore"
+    }
+  },
+  "peerDependencies": {
+    "jest": ">=22"
+  },
+  "jest": {
+    "projects": [
+      "<rootDir>/jest.*.config.js"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.35",
+    "@babel/core": "^7.0.0-beta.35",
+    "@babel/preset-env": "^7.0.0-beta.35",
+    "babel-core": "^7.0.0-bridge.0",
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-jest": "^21.5.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "jest": "^22.0.1",
+    "jest-runner-eslint": "^0.3.0",
+    "prettier": "^1.9.2",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "@babel/code-frame": "^7.0.0-beta.35",
+    "pify": "^3.0.0",
+    "throat": "^4.1.0",
+    "worker-farm": "^1.5.2"
+  }
+}
