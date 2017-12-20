@@ -1,13 +1,15 @@
-const codeFrame = require('@babel/code-frame').default;
+const codeFrame = require('@babel/code-frame').codeFrameColumns;
 const ts = require('typescript');
 const fs = require('fs');
 
-const appendCodeFrame = ({ filePath, errorMessage, line, column }) => {
-  if (typeof line === 'undefined') {
+const appendCodeFrame = ({ filePath, errorMessage, location }) => {
+  if (typeof location === 'undefined') {
     return errorMessage;
   }
   const rawLines = fs.readFileSync(filePath, 'utf8');
-  return `${errorMessage}\n${codeFrame(rawLines, line, column)}`;
+  return `${errorMessage}\n${codeFrame(rawLines, location, {
+    highlightCode: true,
+  })}`;
 };
 
 const convertErrors = ({ start, end, errors, testPath }) => ({
@@ -60,16 +62,34 @@ const runTsc = ({ testPath /*, config */ }, workerCallback) => {
     const errors = allDiagnostics.map(diagnostic => {
       if (diagnostic.file) {
         const {
-          line,
-          character,
+          line: lineStart,
+          character: characterStart,
         } = diagnostic.file.getLineAndCharacterOfPosition(diagnostic.start);
+        const {
+          line: lineEnd,
+          character: characterEnd,
+        } = diagnostic.file.getLineAndCharacterOfPosition(
+          diagnostic.start + diagnostic.length
+        );
+
+        const location = {
+          start: {
+            line: lineStart + 1,
+            column: characterStart + 1,
+          },
+          end: {
+            line: lineEnd + 1,
+            column: characterEnd + 1,
+          },
+        };
+
         const message = ts.flattenDiagnosticMessageText(
           diagnostic.messageText,
           '\n'
         );
+
         return {
-          line: line + 1,
-          column: character + 1,
+          location,
           errorMessage: message,
           filePath: diagnostic.file.fileName,
         };
