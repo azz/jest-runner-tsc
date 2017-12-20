@@ -43,7 +43,7 @@
     "semantic-release": "^8.2.0"
   },
   "dependencies": {
-    "@babel/code-frame": "^7.0.0-beta.35",
+    "@babel/code-frame": "7.0.0-beta.35",
     "pify": "^3.0.0",
     "throat": "^4.1.0",
     "worker-farm": "^1.5.2"
