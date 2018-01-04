@@ -60,7 +60,7 @@ const runTsc = ({ testPath /*, config */ }, workerCallback) => {
       .concat(emitResult.diagnostics);
 
     const errors = allDiagnostics.map(diagnostic => {
-      if (diagnostic.file) {
+      if (diagnostic .file) {
         const {
           line: lineStart,
           character: characterStart,
