@@ -1,3 +1,4 @@
+const path = require('path');
 const codeFrame = require('@babel/code-frame').codeFrameColumns;
 const ts = require('typescript');
 const fs = require('fs');
@@ -46,12 +47,31 @@ const convertErrors = ({ start, end, errors, testPath }) => ({
   ),
 });
 
-const runTsc = ({ testPath /*, config */ }, workerCallback) => {
+const runTsc = ({ testPath, config: jestConfig }, workerCallback) => {
   try {
+    const configPath = path.resolve(jestConfig.rootDir, 'tsconfig.json');
+    const configContents = fs.readFileSync(configPath).toString();
+    const { config, error } = ts.parseConfigFileTextToJson(
+      configPath,
+      configContents
+    );
+
+    if (error) {
+      return {
+        errorMessage: error,
+        filePath: testPath,
+      };
+    }
+
+    const settings = ts.convertCompilerOptionsFromJson(
+      config['compilerOptions'] || {},
+      process.cwd()
+    );
+
+    const options = Object.assign({}, { noEmit: true }, settings.options);
+
     const start = +new Date();
-    const program = ts.createProgram([testPath], {
-      noEmit: true,
-    });
+    const program = ts.createProgram([testPath], options);
 
     const emitResult = program.emit();
 
