@@ -51,10 +51,7 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
-    "create-jest-runner": "^0.4.0",
-    "pify": "^3.0.0",
-    "throat": "^4.1.0",
-    "worker-farm": "^1.5.2"
+    "create-jest-runner": "^0.4.0"
   },
   "repository": {
     "type": "git",

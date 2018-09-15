@@ -1,7 +1,7 @@
-const path = require('path');
-const codeFrame = require('@babel/code-frame').codeFrameColumns;
-const ts = require('typescript');
-const fs = require('fs');
+import path from 'path';
+import { codeFrameColumns as codeFrame } from '@babel/code-frame';
+import ts from 'typescript';
+import fs from 'fs';
 
 const appendCodeFrame = ({ filePath, errorMessage, location }) => {
   if (typeof location === 'undefined') {
@@ -70,7 +70,7 @@ const runTsc = ({ testPath, config: jestConfig }, workerCallback) => {
 
     const options = Object.assign({}, { noEmit: true }, settings.options);
 
-    const start = +new Date();
+    const start = Date.now();
     const program = ts.createProgram([testPath], options);
 
     const emitResult = program.emit();
@@ -124,7 +124,7 @@ const runTsc = ({ testPath, config: jestConfig }, workerCallback) => {
       }
     });
 
-    const end = +new Date();
+    const end = Date.now();
     workerCallback(null, convertErrors({ start, end, errors, testPath }));
   } catch (e) {
     workerCallback(e);
