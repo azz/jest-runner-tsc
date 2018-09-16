@@ -5,6 +5,8 @@ extends:
 env:
   es6: true
   node: true
+parserOptions:
+  ecmaVersion: 2018
 overrides:
 - files: "src/**/*.js"
   parserOptions:
