@@ -23,30 +23,35 @@
   },
   "jest": {
     "projects": [
-      "<rootDir>/jest.test.config.js",
-      "<rootDir>/jest.eslint.config.js"
+      {
+        "displayName": "test"
+      },
+      {
+        "runner": "jest-runner-eslint",
+        "displayName": "lint",
+        "testMatch": ["<rootDir>/**/*.js"],
+        "testPathIgnorePatterns": ["node_modules/"]
+      }
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.35",
-    "@babel/core": "^7.0.0-beta.35",
-    "@babel/preset-env": "^7.0.0-beta.35",
-    "babel-core": "^7.0.0-bridge.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-jest": "^21.5.0",
     "eslint-plugin-prettier": "^2.4.0",
-    "jest": "^22.0.1",
-    "jest-runner-eslint": "^0.3.0",
+    "jest": "^23.6.0",
+    "jest-runner-eslint": "^0.6.0",
     "prettier": "^1.9.2",
-    "typescript": "^2.6.2",
-    "semantic-release": "^8.2.0"
+    "semantic-release": "^8.2.0",
+    "typescript": "^2.6.2"
   },
   "dependencies": {
-    "@babel/code-frame": "7.0.0-beta.35",
-    "pify": "^3.0.0",
-    "throat": "^4.1.0",
-    "worker-farm": "^1.5.2"
+    "@babel/code-frame": "^7.0.0",
+    "create-jest-runner": "^0.4.0"
   },
   "repository": {
     "type": "git",
