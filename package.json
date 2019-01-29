@@ -1,6 +1,6 @@
 {
   "name": "jest-runner-tsc",
-  "version": "0.0.0-development",
+  "version": "0.0.1-development",
   "description": "A Jest Runner for the TypeScript compiler",
   "main": "dist",
   "engines": {
@@ -10,48 +10,31 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "jest",
+    "test": "npm run-script build && jest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-  },
-  "jest-runner-eslint": {
-    "cliOptions": {
-      "ignorePath": ".gitignore"
-    }
   },
   "peerDependencies": {
     "jest": ">=22"
   },
-  "jest": {
-    "projects": [
-      {
-        "displayName": "test"
-      },
-      {
-        "runner": "jest-runner-eslint",
-        "displayName": "lint",
-        "testMatch": ["<rootDir>/**/*.js"],
-        "testPathIgnorePatterns": ["node_modules/"]
-      }
-    ]
-  },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.1",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@types/jest": "^23.3.13",
     "babel-core": "7.0.0-bridge.0",
-    "eslint": "^4.13.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-jest": "^21.5.0",
-    "eslint-plugin-prettier": "^2.4.0",
-    "jest": "^23.6.0",
-    "jest-runner-eslint": "^0.6.0",
-    "prettier": "^1.9.2",
-    "semantic-release": "^8.2.0",
-    "typescript": "^2.6.2"
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-jest": "^22.2.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "jest": "^24.0.0",
+    "jest-runner-eslint": "^0.7.1",
+    "prettier": "^1.16.1",
+    "semantic-release": "^15.13.3",
+    "typescript": "^3.2.4"
   },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
-    "create-jest-runner": "^0.4.0"
+    "create-jest-runner": "^0.4.1"
   },
   "repository": {
     "type": "git",

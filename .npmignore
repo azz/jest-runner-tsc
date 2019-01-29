@@ -1,0 +1,14 @@
+.git/
+.idea/
+node_modules/
+test/
+src/
+*.stackdump
+.gitignore
+yarn.lock
+tslint.json
+.eslintrc.yml
+.babelrc
+.prettierrc.yml
+.travis.yml
+jest.config.js

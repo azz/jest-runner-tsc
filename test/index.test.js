@@ -1,3 +1,6 @@
 describe('runner', () => {
-  test('passes', () => {});
+  test('passes', () => {
+    const alwaysTrue = true;
+    expect(alwaysTrue).toBeTruthy();
+  });
 });
