@@ -1,10 +1,10 @@
 {
   "name": "jest-runner-tsc",
-  "version": "0.0.1-development",
+  "version": "0.0.0-development",
   "description": "A Jest Runner for the TypeScript compiler",
   "main": "dist",
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "author": "Lucas Azzola <@azz>",
   "license": "MIT",
