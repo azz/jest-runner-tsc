@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "npm run-script build && jest",
+    "test": "yarns build && jest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "peerDependencies": {
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
-    "create-jest-runner": "^0.4.1"
+    "create-jest-runner": "~0.4.1"
   },
   "repository": {
     "type": "git",
