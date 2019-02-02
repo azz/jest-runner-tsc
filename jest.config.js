@@ -20,6 +20,7 @@ module.exports = {
       moduleFileExtensions: ['ts', 'js'],
       runner: '<rootDir>/../dist/index.js',
       testMatch: ['<rootDir>/*.ts'],
+      testPathIgnorePatterns: ['lib-bad.test.ts'],
     },
   ],
 };
