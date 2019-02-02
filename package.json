@@ -11,7 +11,7 @@
   "scripts": {
     "build": "babel src -d dist",
     "test": "npm run-script build && jest",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "peerDependencies": {
     "jest": ">=22"
@@ -29,7 +29,7 @@
     "jest": "^24.0.0",
     "jest-runner-eslint": "^0.7.1",
     "prettier": "^1.16.1",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "^8.2.0",
     "typescript": "^3.2.4"
   },
   "dependencies": {
