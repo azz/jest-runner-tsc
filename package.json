@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "yarns build && jest",
+    "test": "yarn build && jest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "peerDependencies": {
