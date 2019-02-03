@@ -24,7 +24,7 @@ jest.tsc.config.js:
 module.exports = {
   runner: 'jest-runner-tsc',
   displayName: 'tsc',
-  moduleFileExtensions: ['ts', 'tsx'],
+  moduleFileExtensions: ['js','ts', 'tsx'],
   testMatch: ['<rootDir>/**/*.ts'],
 };
 ```
