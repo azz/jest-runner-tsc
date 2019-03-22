@@ -42,17 +42,16 @@ const runTsc = ({ testPath, config: jestConfig }) => {
     process.cwd()
   );
 
-  const options = Object.assign({}, { noEmit: true }, settings.options);
+  const options = {
+    compilerOptions: {
+      noEmit: true,
+      ...settings.options,
+    },
+  };
 
-  const program = ts.createProgram([testPath], options);
+  const transpileOutput = ts.transpileModule(testPath, options);
 
-  const emitResult = program.emit();
-
-  const allDiagnostics = ts
-    .getPreEmitDiagnostics(program)
-    .concat(emitResult.diagnostics);
-
-  const errors = allDiagnostics
+  const errors = transpileOutput.diagnostics
     .map(diagnostic => {
       if (diagnostic.file) {
         const {
