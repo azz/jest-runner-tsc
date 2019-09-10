@@ -14,7 +14,7 @@
 npm install --save-dev jest-runner-tsc
 ```
 
-## configure
+## usage
 
 Jest configuration:
 
@@ -28,6 +28,30 @@ module.exports = {
   testMatch: ['<rootDir>/**/*.ts'],
 };
 ```
+
+## options
+
+This project uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig), so you can provide config via:
+
+- a `jest-runner-tsc` property in your package.json
+- a `jest-runner-tsc.config.js` JS file
+- a `.jest-runner-tscrc` JSON file
+
+### Example in package.json
+
+```json
+{
+  "jest-runner-tsc": {
+    "tsconfigPath": "./tsconfig.types.json"
+  }
+}
+```
+
+### `tsconfigPath`
+
+Default: `./tsconfig.json`
+
+A relative path to your `tsconfig.json` file.
 
 ## run
 
