@@ -50,7 +50,8 @@ const runTsc = ({ testPath, config: jestConfig }) => {
 
   const allDiagnostics = ts
     .getPreEmitDiagnostics(program)
-    .concat(emitResult.diagnostics);
+    .concat(emitResult.diagnostics)
+    .filter(diagnostic => diagnostic.file.fileName === testPath);
 
   const errors = allDiagnostics
     .map(diagnostic => {
