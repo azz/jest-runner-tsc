@@ -34,11 +34,14 @@
   },
   "dependencies": {
     "@babel/code-frame": "^7.0.0",
+    "cosmiconfig": "^5.2.1",
     "create-jest-runner": "~0.4.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/azz/jest-runner-tsc.git"
   },
-  "files": ["/dist"]
+  "files": [
+    "/dist"
+  ]
 }

@@ -14,9 +14,20 @@ const appendCodeFrame = ({ filePath, errorMessage, location }) => {
   })}`;
 };
 
-const runTsc = ({ testPath, config: jestConfig }) => {
+const runTsc = ({ testPath, config: jestConfig, extraOptions }) => {
   const start = Date.now();
-  const configPath = path.resolve(jestConfig.rootDir, 'tsconfig.json');
+
+  const configPath =
+    typeof extraOptions.tsconfigPath === 'string'
+      ? path.resolve(extraOptions.tsconfigPath)
+      : path.resolve(jestConfig.rootDir, 'tsconfig.json');
+
+  if (!fs.existsSync(configPath)) {
+    throw new Error(
+      'Cannot find tsconfig file. Either create one in the root of your project or define a custom path via the `tsconfigPath` option.'
+    );
+  }
+
   const configContents = fs.readFileSync(configPath).toString();
   const { config, error } = ts.parseConfigFileTextToJson(
     configPath,
